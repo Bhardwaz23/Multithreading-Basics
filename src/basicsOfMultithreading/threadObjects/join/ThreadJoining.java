@@ -1,19 +1,27 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.threadObjects.join;
 
-public class ThreadWaiting {
+public class ThreadJoining {
 
 	public static void main(String[] args) {
-		Thread t1 = new RunnerThreadWait1();
-		Thread t2 = new RunnerThreadWait2();
+		Thread t1 = new RunnerThreadJoin1();
+		Thread t2 = new RunnerThreadJoin2();
 		
-		// Concurrent execution of Runner1 and Runner2
-		t1.start();	// calls the overridden run() method of Thread class 
+		t1.start(); 
 		t2.start();
+		
+		try {
+			t1.join();	// this method waits for this thread to die (finish it's task)
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Main Thread Finished....");	// If we don't join, this completes first then other threads complete.
 	}
 
 }
 
-class RunnerThreadWait1 extends Thread{
+class RunnerThreadJoin1 extends Thread{
 
 	@Override
 	public void run() {
@@ -28,7 +36,7 @@ class RunnerThreadWait1 extends Thread{
 	}
 }
 
-class RunnerThreadWait2 extends Thread{
+class RunnerThreadJoin2 extends Thread{
 
 	@Override
 	public void run() {

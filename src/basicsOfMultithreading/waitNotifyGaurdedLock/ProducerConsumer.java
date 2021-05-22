@@ -1,4 +1,4 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.waitNotifyGaurdedLock;
 
 import java.util.ArrayList;
 import java.util.List;

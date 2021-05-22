@@ -1,4 +1,4 @@
-package basicsOfMultithreading;
+package concurrentCollections.executor;
 
 import java.util.ArrayList;
 import java.util.List;

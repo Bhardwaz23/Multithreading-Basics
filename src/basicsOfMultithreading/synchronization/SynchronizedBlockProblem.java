@@ -1,27 +1,24 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.synchronization;
 
-/*
- * When you are having multiple synchronized methods or blocks, it is not advisable to use Class Intrinsic Lock on the same class.
- */
-
-public class SynchronizedBlock {
+public class SynchronizedBlockProblem {
 
 	private static int count1 = 0;
 	private static int count2 = 0;
 
-	private static Object lock1 = new Object();
-	private static Object lock2 = new Object();
-
 	public static void incrementCount1() {
-		// Using the lock on different instance or class. This resolves the problem
-		synchronized (lock1) {
+		// Class Intrinsic Lock on SynchronizedBlockProblem class to this block. This
+		// creates the same problem as Synchronized Method because of Class Intrinsic
+		// Lock.
+		synchronized (SynchronizedBlockProblem.class) {
 			count1++;
 		}
 	}
 
 	public static void incrementCount2() {
-		// Using the lock on different instance or class. This resolves the problem
-		synchronized (lock2) {
+		// Class Intrinsic Lock on SynchronizedBlockProblem class to this block. This
+		// creates the same problem as Synchronized Method because of Class Intrinsic
+		// Lock.
+		synchronized (SynchronizedBlockProblem.class) {
 			count2++;
 		}
 	}

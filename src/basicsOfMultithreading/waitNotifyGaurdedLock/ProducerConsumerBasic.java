@@ -1,9 +1,9 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.waitNotifyGaurdedLock;
 
-public class WaitAndNotify {
+public class ProducerConsumerBasic {
 
 	public static void main(String[] args) {
-		Processor processor = new Processor();
+		ProducerConsumerProcessor processor = new ProducerConsumerProcessor();
 
 		Thread t1 = new Thread(new Runnable() {
 
@@ -44,12 +44,11 @@ public class WaitAndNotify {
 
 }
 
-class Processor {
+class ProducerConsumerProcessor {
 
 	public void producer() throws InterruptedException {
 		synchronized (this) {
 			System.out.println("Got the Class Intrinsic Lock: I'm producer");
-			//wait(); // waiting for other thread (t2) to complete (infinite time)
 			wait(5000);	// waits only for maximum 5 seconds
 			System.out.println("Producer again after waiting for the other thread");
 		}
@@ -60,7 +59,6 @@ class Processor {
 		synchronized (this) {
 			System.out.println("Got the Class Intrinsic Lock: I'm consumer");
 			notify(); // notifying thread (t1) to continue it's execution by acquiring the lock
-			//notifyAll(); // notify all the threads waiting for the lock (on the same object)
 		}
 	}
 }

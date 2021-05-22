@@ -1,4 +1,4 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.waitNotifyGaurdedLock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

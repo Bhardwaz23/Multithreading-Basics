@@ -1,4 +1,4 @@
-package basicsOfMultithreading;
+package basicsOfMultithreading.threadObjects.creation;
 
 public class ThreadWithThreadClass {
 
